@@ -1,4 +1,4 @@
-Third Person Controller Template - Godot Souls-Like
+# Third Person Controller Template - Godot Souls-Like
 
 ## Installation
 
@@ -9,8 +9,7 @@ Select "Import" and import the project.
 ## Usage
 Watch this video or follow the steps below:
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/GQ96m3ZBLY0)
-
+https://youtu.be/GQ96m3ZBLY0
 
 In the Scene menu, delete the "GodotSouls" KinematicBody and children.
 
