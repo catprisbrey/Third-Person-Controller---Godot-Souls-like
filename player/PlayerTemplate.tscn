@@ -8,28 +8,28 @@ radius = 0.3047
 height = 1.20199
 
 [sub_resource type="AnimationNodeAnimation" id=17]
-animation = "SwordAtk1"
+animation = "Attack1"
 
 [sub_resource type="AnimationNodeAnimation" id=18]
-animation = "SwordAtk2"
+animation = "Attack2"
 
 [sub_resource type="AnimationNodeAnimation" id=19]
-animation = "SpecialAttack"
+animation = "BigAttack"
 
 [sub_resource type="AnimationNodeAnimation" id=20]
-animation = "Knight-idle-loop"
+animation = "Idle-loop"
 
 [sub_resource type="AnimationNodeAnimation" id=21]
 animation = "Jump"
 
 [sub_resource type="AnimationNodeAnimation" id=22]
-animation = "Knight-Roll"
+animation = "Roll"
 
 [sub_resource type="AnimationNodeAnimation" id=23]
-animation = "Knight-run-loop"
+animation = "Run-loop"
 
 [sub_resource type="AnimationNodeAnimation" id=24]
-animation = "Knight-walk-loop"
+animation = "Walk-loop"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=25]
 xfade_time = 0.2
@@ -40,11 +40,11 @@ xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=27]
 advance_condition = "IsWalking"
-xfade_time = 0.2
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=28]
 advance_condition = "IsRunning"
-xfade_time = 0.2
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=31]
 advance_condition = "IsNotRunning"
@@ -59,7 +59,7 @@ xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=38]
 switch_mode = 2
-auto_advance = true
+advance_condition = "IsOnFloor"
 xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=39]
@@ -75,6 +75,7 @@ xfade_time = 0.2
 [sub_resource type="AnimationNodeStateMachineTransition" id=41]
 switch_mode = 2
 auto_advance = true
+advance_condition = "IsOnFloor"
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=42]
@@ -95,12 +96,12 @@ xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=46]
 switch_mode = 2
-auto_advance = true
+advance_condition = "IsOnFloor"
 xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=47]
 switch_mode = 2
-auto_advance = true
+advance_condition = "IsOnFloor"
 xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachine" id=49]
@@ -123,9 +124,9 @@ states/Walk/position = Vector2( 560, 213 )
 transitions = [ "Idle", "Attack1", SubResource( 25 ), "Attack1", "Attack2", SubResource( 26 ), "Idle", "Walk", SubResource( 27 ), "Walk", "Run", SubResource( 28 ), "Run", "Walk", SubResource( 31 ), "Walk", "Idle", SubResource( 32 ), "Run", "BigAttack", SubResource( 37 ), "BigAttack", "Idle", SubResource( 38 ), "Roll", "Run", SubResource( 39 ), "Roll", "Idle", SubResource( 40 ), "Roll", "Walk", SubResource( 41 ), "Walk", "Jump", SubResource( 42 ), "Jump", "Walk", SubResource( 43 ), "Run", "Jump", SubResource( 44 ), "Idle", "Jump", SubResource( 45 ), "Attack1", "Idle", SubResource( 46 ), "Attack2", "Idle", SubResource( 47 ) ]
 start_node = "Idle"
 end_node = "Idle"
-graph_offset = Vector2( 0, -106.552 )
+graph_offset = Vector2( 0, -89.4158 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=8]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=50]
 
 [node name="PlayerTemplate" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -152,9 +153,10 @@ one_shot = true
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 49 )
+anim_player = NodePath("../AnimationPlayer")
 process_mode = 0
 root_motion_track = NodePath("Skeleton:mixamorigSpine1")
-parameters/playback = SubResource( 8 )
+parameters/playback = SubResource( 50 )
 parameters/conditions/IsInAir = false
 parameters/conditions/IsNotMoving = false
 parameters/conditions/IsNotRunning = false

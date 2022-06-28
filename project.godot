@@ -20,7 +20,7 @@ window/size/fullscreen=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/orphan_import_file_cleaner/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [input]
 
