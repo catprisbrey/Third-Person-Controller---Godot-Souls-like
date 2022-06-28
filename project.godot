@@ -18,6 +18,10 @@ config/icon="res://icon.png"
 
 window/size/fullscreen=true
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/orphan_import_file_cleaner/plugin.cfg" )
+
 [input]
 
 left={
