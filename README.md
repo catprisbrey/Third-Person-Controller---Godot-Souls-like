@@ -9,9 +9,11 @@ Select "Import" and import the project.
 
 You only need the following files:
 
-PlayerTemplate.tscn
-PlayerTemplate.gd
-CameraTemplate.gd
+- PlayerTemplate.tscn
+
+- PlayerTemplate.gd
+
+- CameraTemplate.gd
 
 Add those to your project and you'll be able to drop in the PlayerTemplate scene and add your character.
 
