@@ -1,5 +1,7 @@
 # Third Person Controller Template - Godot Souls-Like
 
+![Controller Screenshot](https://github.com/pemguin005/Third-Person-Controller---Godot-Souls-like/blob/main/.gdignore/GodotSoulsDemo.GIF)
+
 ## Installation of the entire Demo
 
 Download the Template files, and open Godot.
