@@ -1,6 +1,4 @@
-# Foobar
-
-Foobar is a Python library for dealing with word pluralization.
+Third Person Controller Template - Godot Souls-Like
 
 ## Installation
 
