@@ -1,10 +1,19 @@
 # Third Person Controller Template - Godot Souls-Like
 
-## Installation
+## Installation of the entire Demo
 
 Download the Template files, and open Godot.
 Select "Import" and import the project. 
 
+## Installation of just the controller template.
+
+You only need the following files:
+
+PlayerTemplate.tscn
+PlayerTemplate.gd
+CameraTemplate.gd
+
+Add those to your project and you'll be able to drop in the PlayerTemplate scene and add your character.
 
 ## Usage
 Watch this video or follow the steps below:
