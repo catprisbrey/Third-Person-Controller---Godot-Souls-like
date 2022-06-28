@@ -16,6 +16,11 @@ You only need the following files:
 - CameraTemplate.gd
 
 Add those to your project and you'll be able to drop in the PlayerTemplate scene and add your character.
+The code expects certain keymaps to be present:
+
+"sprint, aim, jump, roll, attack, forward, backward, left, right"
+
+If you have those mapped, and the files present, the controller should work.
 
 ## Usage
 Watch this video or follow the steps below:
