@@ -19,6 +19,7 @@ export var run_speed = 5
 export var dash_power = 12 # Controls roll and big attack speed boosts
 # Animation node names
 var roll_node_name = "Roll"
+var idle_node_name = "Idle"
 var run_node_name = "Run"
 var jump_node_name = "Jump"
 var attack1_node_name = "Attack1"
@@ -58,12 +59,19 @@ func _input(event): # All major mouse and button input events
 		if (is_attacking == false) and event.is_action_pressed("attack"):
 			playback.travel(attack1_node_name)
 		# Attack 2 if Attack button pressed again.
-		if attack1_node_name in playback.get_current_node() and event.is_action_pressed("attack"): #Combo Attack 2
+		if attack1_node_name in playback.get_current_node() and event.is_action_pressed("attack"): #Combo Attack 1 into 2
 			playback.travel(attack2_node_name)
+		if attack2_node_name in playback.get_current_node() and event.is_action_pressed("attack"): #Combo Attack 2 into... add more attacks?!
+			pass
 		# BigAttack if Attack button pressed while sprinting
 		if run_node_name in playback.get_current_node() and event.is_action_pressed("attack"): # Big Attack if sprinting, adds a dash
 			horizontal_velocity = direction * dash_power
 			playback.travel(bigattack_node_name)
+
+#	Final attack lines, prevent node travel during final attacks, stopping attack1 from happening immediately after other attack combos finish.
+		if (bigattack_node_name in playback.get_current_node()) or (attack2_node_name in playback.get_current_node()) and event.is_action_pressed("attack"): 
+			playback.travel(idle_node_name)
+
 	
 func _physics_process(delta):
 	
