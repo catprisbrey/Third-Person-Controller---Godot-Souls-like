@@ -1,0 +1,164 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://scripts/PlayerTemplate.gd" type="Script" id=1]
+[ext_resource path="res://scripts/CameraTemplate.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape" id=48]
+radius = 0.3047
+height = 1.20199
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "SwordAtk1"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "SwordAtk2"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "SpecialAttack"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "Knight-idle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "Jump"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "Knight-Roll"
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "Knight-run-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "Knight-walk-loop"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+switch_mode = 2
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+advance_condition = "IsWalking"
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+advance_condition = "IsRunning"
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+advance_condition = "IsNotRunning"
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+advance_condition = "IsNotWalking"
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+switch_mode = 2
+advance_condition = "IsRunning"
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+switch_mode = 2
+advance_condition = "IsNotMoving"
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+advance_condition = "IsInAir"
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+advance_condition = "IsOnFloor"
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+advance_condition = "IsInAir"
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=45]
+advance_condition = "IsInAir"
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=46]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachine" id=49]
+states/Attack1/node = SubResource( 17 )
+states/Attack1/position = Vector2( 359, -12 )
+states/Attack2/node = SubResource( 18 )
+states/Attack2/position = Vector2( 170, -12 )
+states/BigAttack/node = SubResource( 19 )
+states/BigAttack/position = Vector2( 573, -12 )
+states/Idle/node = SubResource( 20 )
+states/Idle/position = Vector2( 359, 213 )
+states/Jump/node = SubResource( 21 )
+states/Jump/position = Vector2( 560, 327 )
+states/Roll/node = SubResource( 22 )
+states/Roll/position = Vector2( 560, 111 )
+states/Run/node = SubResource( 23 )
+states/Run/position = Vector2( 741, 213 )
+states/Walk/node = SubResource( 24 )
+states/Walk/position = Vector2( 560, 213 )
+transitions = [ "Idle", "Attack1", SubResource( 25 ), "Attack1", "Attack2", SubResource( 26 ), "Idle", "Walk", SubResource( 27 ), "Walk", "Run", SubResource( 28 ), "Run", "Walk", SubResource( 31 ), "Walk", "Idle", SubResource( 32 ), "Run", "BigAttack", SubResource( 37 ), "BigAttack", "Idle", SubResource( 38 ), "Roll", "Run", SubResource( 39 ), "Roll", "Idle", SubResource( 40 ), "Roll", "Walk", SubResource( 41 ), "Walk", "Jump", SubResource( 42 ), "Jump", "Walk", SubResource( 43 ), "Run", "Jump", SubResource( 44 ), "Idle", "Jump", SubResource( 45 ), "Attack1", "Idle", SubResource( 46 ), "Attack2", "Idle", SubResource( 47 ) ]
+start_node = "Idle"
+end_node = "Idle"
+graph_offset = Vector2( 0, -106.552 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=8]
+
+[node name="PlayerTemplate" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0.917525, 0 )
+shape = SubResource( 48 )
+
+[node name="Camroot" type="Spatial" parent="."]
+script = ExtResource( 2 )
+
+[node name="h" type="Spatial" parent="Camroot"]
+
+[node name="v" type="Spatial" parent="Camroot/h"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41498, 0 )
+
+[node name="Camera" type="ClippedCamera" parent="Camroot/h/v"]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4.03244e-07, 0, -2.67056 )
+current = true
+process_mode = 1
+
+[node name="mouse_control_stay_delay" type="Timer" parent="Camroot"]
+one_shot = true
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 49 )
+process_mode = 0
+root_motion_track = NodePath("Skeleton:mixamorigSpine1")
+parameters/playback = SubResource( 8 )
+parameters/conditions/IsInAir = false
+parameters/conditions/IsNotMoving = false
+parameters/conditions/IsNotRunning = false
+parameters/conditions/IsNotWalking = false
+parameters/conditions/IsOnFloor = false
+parameters/conditions/IsRunning = false
+parameters/conditions/IsWalking = false
