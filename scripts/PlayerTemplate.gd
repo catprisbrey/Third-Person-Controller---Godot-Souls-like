@@ -112,14 +112,16 @@ func _physics_process(delta):
 		direction = direction.rotated(Vector3.UP, h_rot).normalized()
 		is_walking = true
 	# Sprint input, state and speed
-		if Input.is_action_pressed("sprint"): 
+		if (Input.is_action_pressed("sprint")) and (is_walking == true): 
 			movement_speed = run_speed
 			is_running = true
 		else: # Walk State and speed
 			movement_speed = walk_speed
 			is_running = false
-	else: is_walking = false
-
+	else: 
+		is_walking = false
+		is_running = false
+		
 	if Input.is_action_pressed("aim"):  # Aim/Strafe input and  mechanics
 		player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, $Camroot/h.rotation.y, delta * angular_acceleration)
 
