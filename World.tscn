@@ -141,12 +141,12 @@ margin_top = 9.0
 margin_right = 1159.0
 margin_bottom = 148.0
 tab_size = 5
-text = "Controls:	    WASD, or Left AxisStick
+text = "Controls:	    WASD, Numpad, or Left AxisStick
 View:			Mouse, NumPad, or Right AxisStick
 Jump:			Space Bar or X
 Run:			  Shift Key or L2
-Roll:			  Mouse Right Button or R1
-Attack:		   Mouse Left Button or R2
+Roll:			  Mouse Right Button, Numpad9, or R1
+Attack:		   Mouse Left Button, NumPad7, or R2
 Strafe:		    Ctrl Button or L1
 
 *Buttons based on PS4 Pad"
