@@ -3872,7 +3872,7 @@ bones/28/name = "mixamorigRightHand"
 bones/28/parent = 27
 bones/28/rest = Transform( 0.874645, 0.142625, 0.463308, -0.0299874, 0.969828, -0.241941, -0.483836, 0.197719, 0.852532, 6.06479e-08, 0.242276, -2.82372e-08 )
 bones/28/enabled = true
-bones/28/bound_children = [ NodePath("BoneAttachment") ]
+bones/28/bound_children = [  ]
 bones/29/name = "mixamorigRightHandThumb1"
 bones/29/parent = 28
 bones/29/rest = Transform( 0.858246, 0.507771, -0.07472, -0.47673, 0.734774, -0.48253, -0.190112, 0.449751, 0.872686, 0.0195284, 0.0326019, 0.000378218 )
@@ -4000,7 +4000,7 @@ material/4 = ExtResource( 15 )
 material/5 = ExtResource( 11 )
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Skeleton"]
-transform = Transform( -0.0208887, -0.756197, 0.654012, 0.774354, -0.42602, -0.467851, 0.632409, 0.496664, 0.594461, -0.379171, 1.00587, -0.19957 )
+transform = Transform( 0.225543, -0.877504, 0.423224, 0.562453, -0.237423, -0.79201, 0.795473, 0.416677, 0.440004, -0.394587, 1.02369, -0.176939 )
 bone_name = "mixamorigRightHand"
 
 [node name="GodAx" type="MeshInstance" parent="Skeleton/BoneAttachment"]
@@ -4023,7 +4023,7 @@ transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4.0324
 current = true
 process_mode = 1
 
-[node name="mouse_control_stay_delay" type="Timer" parent="Camroot"]
+[node name="control_stay_delay" type="Timer" parent="Camroot"]
 one_shot = true
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

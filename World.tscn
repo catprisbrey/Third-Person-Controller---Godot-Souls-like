@@ -136,17 +136,20 @@ data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1
 [node name="GodotSouls" parent="." instance=ExtResource( 4 )]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 799.0
+margin_left = 805.0
 margin_top = 9.0
-margin_right = 1041.0
-margin_bottom = 104.0
+margin_right = 1159.0
+margin_bottom = 148.0
 tab_size = 5
-text = "Controls:		Mouse + WASD
-Jump:			Space Bar
-Run:			  Shift Key
-Roll:			  Mouse Right Button
-Attack:		   Mouse Left Button
-Strafe:		    Ctrl Button"
+text = "Controls:	    WASD, or Left AxisStick
+View:			Mouse, NumPad, or Right AxisStick
+Jump:			Space Bar or X
+Run:			  Shift Key or L2
+Roll:			  Mouse Right Button or R1
+Attack:		   Mouse Left Button or R2
+Strafe:		    Ctrl Button or L1
+
+*Buttons based on PS4 Pad"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )

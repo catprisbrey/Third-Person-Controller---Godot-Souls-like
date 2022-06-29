@@ -9,6 +9,13 @@ onready var playback = animation_tree.get("parameters/playback");
 export (NodePath) var PlayerCharacterMesh
 export onready var player_mesh = get_node(PlayerCharacterMesh)
 
+# Gamplay mechanics and Inspector tweakables
+export var gravity = 9.8
+export var jump_force = 9
+export var walk_speed = 2
+export var run_speed = 5
+export var dash_power = 12 # Controls roll and big attack speed boosts
+
 # Animation node names
 var roll_node_name = "Roll"
 var idle_node_name = "Idle"
@@ -33,13 +40,6 @@ var vertical_velocity = Vector3()
 var movement_speed = int()
 var angular_acceleration = int()
 var acceleration = int()
-
-# Gamplay mechanics and Inspector tweakables
-export var gravity = 9.8
-export var jump_force = 9
-export var walk_speed = 2
-export var run_speed = 5
-export var dash_power = 12 # Controls roll and big attack speed boosts
 
 func _ready(): # Camera based Rotation
 	direction = Vector3.BACK.rotated(Vector3.UP, $Camroot/h.global_transform.basis.get_euler().y)
@@ -67,10 +67,13 @@ func _input(event): # All major mouse and button input events
 			playback.travel(attack2_node_name)
 		if attack2_node_name in playback.get_current_node() and event.is_action_pressed("attack"): #Combo Attack 2 into... add more attacks?!
 			pass
+		
 		# BigAttack if Attack button pressed while sprinting
-		if run_node_name in playback.get_current_node() and event.is_action_pressed("attack"): # Big Attack if sprinting, adds a dash
+	if (run_node_name in playback.get_current_node() or roll_node_name in playback.get_current_node()) and event.is_action_pressed("attack"): # Big Attack if sprinting, adds a dash
 			horizontal_velocity = direction * dash_power
 			playback.travel(bigattack_node_name)
+		#BigAttack if Attack button pressed while rolling
+
 	
 func _physics_process(delta):
 	
@@ -82,23 +85,28 @@ func _physics_process(delta):
 	acceleration = 15
 
 	# Gravity mechanics and prevent slope-sliding
-	if not is_on_floor(): vertical_velocity += Vector3.DOWN * gravity * 2 * delta
-	else: vertical_velocity = -get_floor_normal() * gravity / 3
+	if not is_on_floor(): 
+		vertical_velocity += Vector3.DOWN * gravity * 2 * delta
+	else: 
+		vertical_velocity = -get_floor_normal() * gravity / 3
 	
 	# Defining attack state: Add more attacks here if you like
 	if (attack1_node_name in playback.get_current_node()) or (attack2_node_name in playback.get_current_node()) or (bigattack_node_name in playback.get_current_node()): 
 		is_attacking = true
-	else: is_attacking = false
+	else: 
+		is_attacking = false
 
 # Giving BigAttack some Slide
-	if bigattack_node_name in playback.get_current_node(): acceleration = 3
+	if bigattack_node_name in playback.get_current_node(): 
+		acceleration = 3
 
 	# Defining Roll state and limiting movment during rolls
 	if roll_node_name in playback.get_current_node(): 
 		is_rolling = true
 		acceleration = 2
 		angular_acceleration = 2
-	else: is_rolling = false
+	else: 
+		is_rolling = false
 	
 	# Jump input and Mechanics
 	if Input.is_action_just_pressed("jump") and ((is_attacking != true) and (is_rolling != true)) and is_on_floor():
