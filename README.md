@@ -1,6 +1,11 @@
 # Third Person Controller Template - Godot Souls-Like
+Version 1.0.2
 
-![Controller Screenshot](https://github.com/pemguin005/Third-Person-Controller---Godot-Souls-like/blob/main/.gdignore/GodotSoulsDemo.GIF)
+![Controller Screenshot](https://github.com/pemguin005/Third-Person-Controller---Godot-Souls-like/blob/main/screenshots/HunterGodotDemo.GIF)
+
+## Features
+
+A demo scene and template aimed at setting up character models with souls-like controller mechanics very quickly. The demo scene comes with an example character setup, in an example environment, but you only need the three template files to apply this controller to your own models and animations (PlayerTemplate.tscn, PlayerTemplate.gb, and CameraTemplate.gb). 
 
 ## Installation of the entire Demo
 
