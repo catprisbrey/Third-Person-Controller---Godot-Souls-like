@@ -5,7 +5,16 @@ Version 1.0.2
 
 ## Features
 
-A demo scene and template aimed at setting up character models with souls-like controller mechanics very quickly. The demo scene comes with an example character setup, in an example environment, but you only need the three template files to apply this controller to your own models and animations (PlayerTemplate.tscn, PlayerTemplate.gb, and CameraTemplate.gb). 
+A template and demo character for a souls-like, melee focused 3rd person controller and camera. Follow the youtube video to see how to drop in your own characters. Features pre-mapped animations tree nodes, state based conditions, 360 camera, strafe, combo melee attacks, keyboard, mouse and and game-pad support. 
+Quick applying template only requires: 
+
+-Key inputs be mapped
+
+-A GLTF 3D model with animations too drop into the template (Idle, walk, run, jump, roll, attacks) 
+
+-These three files: PlayerTemplate.tscn, PlayerTemplate.gb, and CameraTemplate.gb).
+
+This is a souls-like controller aimed at setting up character models with souls-like controller mechanics very quickly. 
 
 ## Installation of the entire Demo
 
