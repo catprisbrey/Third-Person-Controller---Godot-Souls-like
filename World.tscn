@@ -1,8 +1,8 @@
 [gd_scene load_steps=37 format=2]
 
-[ext_resource path="res://mat/PavingStones115B_1K-JPG.material" type="Material" id=2]
+[ext_resource path="res://player/HunterGodot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mat/CobleStones.material" type="Material" id=2]
 [ext_resource path="res://mat/Pilars.material" type="Material" id=3]
-[ext_resource path="res://player/GodotSouls.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ProceduralSky" id=67]
 sky_top_color = Color( 0.0784314, 0.25098, 0.380392, 1 )
@@ -133,7 +133,7 @@ data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1
 
 [node name="World" type="Spatial"]
 
-[node name="GodotSouls" parent="." instance=ExtResource( 4 )]
+[node name="HunterGodot" parent="." instance=ExtResource( 1 )]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 805.0
