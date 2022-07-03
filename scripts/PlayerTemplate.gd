@@ -78,7 +78,6 @@ func attack3(): # If attack2 is animating, combo into attack 3. This is a templa
 func rollattack(): # If attack pressed while rolling, do a special attack afterwards.
 	if roll_node_name in playback.get_current_node(): 
 		if Input.is_action_just_pressed("attack"):
-			horizontal_velocity = direction * dash_power
 			playback.travel(bigattack_node_name) #change this animation for a different attack
 			
 func bigattack(): # If attack pressed while springing, do a special attack
