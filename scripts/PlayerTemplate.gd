@@ -19,6 +19,7 @@ export var dash_power = 12 # Controls roll and big attack speed boosts
 # Animation node names
 var roll_node_name = "Roll"
 var idle_node_name = "Idle"
+var walk_node_name = "Walk"
 var run_node_name = "Run"
 var jump_node_name = "Jump"
 var attack1_node_name = "Attack1"
@@ -51,31 +52,47 @@ func _input(event): # All major mouse and button input events
 	if event.is_action_pressed("aim"): # Aim button triggers a strafe walk and camera mechanic
 		direction = $Camroot/h.global_transform.basis.z
 
+func roll():
 ## Dodge button input with dash and interruption to basic actions
-	if !roll_node_name in playback.get_current_node() and !jump_node_name in playback.get_current_node() and !bigattack_node_name in playback.get_current_node():
-		if event.is_action_pressed("roll"):
+	if Input.is_action_just_pressed("roll"):
+		if !roll_node_name in playback.get_current_node() and !jump_node_name in playback.get_current_node() and !bigattack_node_name in playback.get_current_node():
 			playback.start(roll_node_name) #"start" not "travel" to speedy teleport to the roll!
 			horizontal_velocity = direction * dash_power
-
-# Attack button input: with combos and sprint attack examples
-	if (is_rolling != true) and is_on_floor():
-		# Attack 1
-		if (is_attacking == false) and event.is_action_pressed("attack"):
-			playback.travel(attack1_node_name)
-		# Attack 2 if Attack button pressed again.
-		if attack1_node_name in playback.get_current_node() and event.is_action_pressed("attack"): #Combo Attack 1 into 2
+			
+func attack1(): # If not doing other things, start attack1
+	if (idle_node_name in playback.get_current_node() or walk_node_name in playback.get_current_node()) and is_on_floor():
+		if Input.is_action_just_pressed("attack"):
+			if (is_attacking == false):
+				playback.travel(attack1_node_name)
+				
+func attack2(): # If attack1 is animating, combo into attack 2
+	if attack1_node_name in playback.get_current_node(): # Big Attack if sprinting, adds a dash
+		if Input.is_action_just_pressed("attack"):
 			playback.travel(attack2_node_name)
-		if attack2_node_name in playback.get_current_node() and event.is_action_pressed("attack"): #Combo Attack 2 into... add more attacks?!
-			pass
-		
-		# BigAttack if Attack button pressed while sprinting
-	if (run_node_name in playback.get_current_node() or roll_node_name in playback.get_current_node()) and event.is_action_pressed("attack"): # Big Attack if sprinting, adds a dash
+			
+func attack3(): # If attack2 is animating, combo into attack 3. This is a template.
+	if attack1_node_name in playback.get_current_node(): 
+		if Input.is_action_just_pressed("attack"):
+			pass #no current animation, but add it's playback here!
+	
+func rollattack(): # If attack pressed while rolling, do a special attack afterwards.
+	if roll_node_name in playback.get_current_node(): 
+		if Input.is_action_just_pressed("attack"):
 			horizontal_velocity = direction * dash_power
-			playback.travel(bigattack_node_name)
-		#BigAttack if Attack button pressed while rolling
-
+			playback.travel(bigattack_node_name) #change this animation for a different attack
+			
+func bigattack(): # If attack pressed while springing, do a special attack
+	if run_node_name in playback.get_current_node(): # Big Attack if sprinting, adds a dash
+		if Input.is_action_just_pressed("attack"):
+			horizontal_velocity = direction * dash_power
+			playback.travel(bigattack_node_name) #Add and Change this animation node for a different attack
 	
 func _physics_process(delta):
+	rollattack()
+	bigattack()
+	attack1()
+	attack2()
+	roll()
 	
 	var on_floor = is_on_floor() # State control for is jumping/falling/landing
 	var h_rot = $Camroot/h.global_transform.basis.get_euler().y
@@ -90,7 +107,7 @@ func _physics_process(delta):
 	else: 
 		vertical_velocity = -get_floor_normal() * gravity / 3
 	
-	# Defining attack state: Add more attacks here if you like
+	# Defining attack state: Add more attacks animations here as you add more!
 	if (attack1_node_name in playback.get_current_node()) or (attack2_node_name in playback.get_current_node()) or (bigattack_node_name in playback.get_current_node()): 
 		is_attacking = true
 	else: 
@@ -108,7 +125,7 @@ func _physics_process(delta):
 	else: 
 		is_rolling = false
 	
-	# Jump input and Mechanics
+#	Jump input and Mechanics
 	if Input.is_action_just_pressed("jump") and ((is_attacking != true) and (is_rolling != true)) and is_on_floor():
 		vertical_velocity = Vector3.UP * jump_force
 		
@@ -119,6 +136,7 @@ func _physics_process(delta):
 					Input.get_action_strength("forward") - Input.get_action_strength("backward"))
 		direction = direction.rotated(Vector3.UP, h_rot).normalized()
 		is_walking = true
+		
 	# Sprint input, state and speed
 		if (Input.is_action_pressed("sprint")) and (is_walking == true): 
 			movement_speed = run_speed
@@ -142,7 +160,7 @@ func _physics_process(delta):
 	else: # Movement mechanics without limitations 
 		horizontal_velocity = horizontal_velocity.linear_interpolate(direction.normalized() * movement_speed, acceleration * delta)
 	
-	# The Sauce. Movement, gravity and velocity in a perfect dance.
+	# The Physics Sauce. Movement, gravity and velocity in a perfect dance.
 	movement.z = horizontal_velocity.z + vertical_velocity.z
 	movement.x = horizontal_velocity.x + vertical_velocity.x
 	movement.y = vertical_velocity.y

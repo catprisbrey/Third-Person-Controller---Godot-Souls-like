@@ -1,11 +1,11 @@
 # Third Person Controller Template - Godot Souls-Like
-Version 1.0.2
+Version 1.0.3
 
 ![Controller Screenshot](https://github.com/pemguin005/Third-Person-Controller---Godot-Souls-like/blob/main/screenshots/HunterGodotDemo.GIF)
 
 ## Features
 
-A template and demo character for a souls-like, melee focused 3rd person controller and camera. Follow the youtube video to see how to drop in your own characters. Features pre-mapped animations tree nodes, state based conditions, 360 camera, strafe, combo melee attacks, keyboard, mouse and and game-pad support. 
+A template and demo character for a souls-like, melee focused 3rd person controller and camera. Follow the youtube video to see how to drop in your own characters. Features pre-mapped animations tree nodes, state based conditions, 360 camera, strafe, combo melee attacks, special attacks, keyboard, mouse and and game-pad support.
 Quick applying template only requires: 
 
 -Key inputs be mapped
@@ -35,6 +35,8 @@ Add those to your project and you'll be able to drop in the PlayerTemplate scene
 The code expects certain keymaps to be present:
 
 "sprint, aim, jump, roll, attack, forward, backward, left, right"
+and for gamepad support:
+"lookup, lookdown, lookleft, lookright"
 
 If you have those mapped, and the files present, the controller should work.
 
