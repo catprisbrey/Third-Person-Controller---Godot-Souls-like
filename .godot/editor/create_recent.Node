@@ -1,0 +1,11 @@
+CharacterBody3D
+SpringArm3D
+SoftDynamicBody3D
+MeshInstance3D
+CSGMesh3D
+Node3D
+VoxelGI
+CSGCombiner3D
+StaticBody3D
+Camera3D
+CollisionShape3D

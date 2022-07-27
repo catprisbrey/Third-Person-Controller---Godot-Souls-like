@@ -1,0 +1,6 @@
+res://World.tscn
+res://scripts/PlayerTemplate.gd
+res://mat/HunterGodot.material
+res://mat/CobleStones.material
+res://mat/Pilars.material
+res://player/PlayerTemplate.tscn
