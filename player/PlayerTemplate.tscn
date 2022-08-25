@@ -124,12 +124,13 @@ states/Walk/position = Vector2( 560, 213 )
 transitions = [ "Idle", "Attack1", SubResource( 25 ), "Attack1", "Attack2", SubResource( 26 ), "Idle", "Walk", SubResource( 27 ), "Walk", "Run", SubResource( 28 ), "Run", "Walk", SubResource( 31 ), "Walk", "Idle", SubResource( 32 ), "Run", "BigAttack", SubResource( 37 ), "BigAttack", "Idle", SubResource( 38 ), "Roll", "Run", SubResource( 39 ), "Roll", "Idle", SubResource( 40 ), "Roll", "Walk", SubResource( 41 ), "Walk", "Jump", SubResource( 42 ), "Jump", "Walk", SubResource( 43 ), "Run", "Jump", SubResource( 44 ), "Idle", "Jump", SubResource( 45 ), "Attack1", "Idle", SubResource( 46 ), "Attack2", "Idle", SubResource( 47 ) ]
 start_node = "Idle"
 end_node = "Idle"
-graph_offset = Vector2( 0, -89.4158 )
+graph_offset = Vector2( 0, 103.504 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=50]
 
 [node name="PlayerTemplate" type="KinematicBody"]
 script = ExtResource( 1 )
+PlayerAnimationTree = NodePath("AnimationTree")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0.917525, 0 )
@@ -153,7 +154,6 @@ one_shot = true
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 49 )
-anim_player = NodePath("../AnimationPlayer")
 process_mode = 0
 root_motion_track = NodePath("Skeleton:mixamorigSpine1")
 parameters/playback = SubResource( 50 )

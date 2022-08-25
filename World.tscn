@@ -1,6 +1,6 @@
 [gd_scene load_steps=37 format=2]
 
-[ext_resource path="res://player/HunterGodot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/Hunter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://mat/CobleStones.material" type="Material" id=2]
 [ext_resource path="res://mat/Pilars.material" type="Material" id=3]
 
@@ -133,8 +133,6 @@ data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1
 
 [node name="World" type="Spatial"]
 
-[node name="HunterGodot" parent="." instance=ExtResource( 1 )]
-
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 805.0
 margin_top = 9.0
@@ -172,7 +170,6 @@ shadow_enabled = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5201, 1.00082, 11.0674 )
 mesh = SubResource( 3 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/LoPilar"]
 
@@ -183,7 +180,6 @@ shape = SubResource( 68 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85815, 1.00082, 11.0674 )
 mesh = SubResource( 3 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/LoPilar2"]
 
@@ -193,7 +189,6 @@ shape = SubResource( 69 )
 [node name="MidPilar" type="MeshInstance" parent="Pilars"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6283, 1.5, 6.70886 )
 mesh = SubResource( 10 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/MidPilar"]
 
@@ -203,7 +198,6 @@ shape = SubResource( 29 )
 [node name="MidPilar2" type="MeshInstance" parent="Pilars"]
 transform = Transform( -3.80685e-08, 0.870905, -0.491451, -1, -4.37114e-08, 0, -2.1482e-08, 0.491451, 0.870905, -2.79767, 0.977009, 6.70886 )
 mesh = SubResource( 10 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/MidPilar2"]
 
@@ -234,7 +228,6 @@ shape = SubResource( 71 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.73471, 1.00082, -11.5207 )
 mesh = SubResource( 3 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/LoPilar3"]
 
@@ -245,7 +238,6 @@ shape = SubResource( 33 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.64355, 1.00082, -11.5207 )
 mesh = SubResource( 3 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/LoPilar4"]
 
@@ -255,7 +247,6 @@ shape = SubResource( 34 )
 [node name="MidPilar3" type="MeshInstance" parent="Pilars"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.8429, 1.5, -7.16215 )
 mesh = SubResource( 10 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/MidPilar3"]
 
@@ -265,7 +256,6 @@ shape = SubResource( 35 )
 [node name="MidPilar4" type="MeshInstance" parent="Pilars"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.58307, 1.5, -7.16215 )
 mesh = SubResource( 10 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/MidPilar4"]
 
@@ -276,7 +266,6 @@ shape = SubResource( 36 )
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.0316, 1.00082, 2.77872 )
 mesh = SubResource( 3 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/LoPilar5"]
 
@@ -287,7 +276,6 @@ shape = SubResource( 72 )
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.0316, 1.00082, -3.59953 )
 mesh = SubResource( 3 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/LoPilar6"]
 
@@ -297,7 +285,6 @@ shape = SubResource( 73 )
 [node name="MidPilar5" type="MeshInstance" parent="Pilars"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.67308, 1.5, 2.88692 )
 mesh = SubResource( 10 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/MidPilar5"]
 
@@ -307,7 +294,6 @@ shape = SubResource( 74 )
 [node name="MidPilar6" type="MeshInstance" parent="Pilars"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.67308, 1.5, -3.53905 )
 mesh = SubResource( 10 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/MidPilar6"]
 
@@ -318,7 +304,6 @@ shape = SubResource( 75 )
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.9221, 1.00082, -3.47609 )
 mesh = SubResource( 3 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/LoPilar7"]
 
@@ -329,7 +314,6 @@ shape = SubResource( 76 )
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.9221, 1.00082, 2.90217 )
 mesh = SubResource( 3 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/LoPilar8"]
 
@@ -339,7 +323,6 @@ shape = SubResource( 77 )
 [node name="MidPilar7" type="MeshInstance" parent="Pilars"]
 transform = Transform( -6.14539e-08, -0.779502, 0.6264, 1, -4.37114e-08, 4.37114e-08, -6.69231e-09, 0.6264, 0.779502, 7.56361, 0.989764, -2.09358 )
 mesh = SubResource( 10 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/MidPilar7"]
 
@@ -349,7 +332,6 @@ shape = SubResource( 78 )
 [node name="MidPilar8" type="MeshInstance" parent="Pilars"]
 transform = Transform( -2.08617e-08, 0.426995, 0.904254, 1, -4.37114e-08, 4.37114e-08, 5.81907e-08, 0.904254, -0.426995, 7.56361, 1.01528, 2.84169 )
 mesh = SubResource( 10 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/MidPilar8"]
 
@@ -380,7 +362,6 @@ shape = SubResource( 81 )
 [node name="Wall" type="MeshInstance" parent="Pilars"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.14111, 1.5, 20.889 )
 mesh = SubResource( 82 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/Wall"]
 
@@ -390,7 +371,6 @@ shape = SubResource( 83 )
 [node name="Wall5" type="MeshInstance" parent="Pilars"]
 transform = Transform( 0.961295, -1.20434e-08, 0.27552, -0.27552, -4.20196e-08, 0.961295, 0, -1, -4.37114e-08, -14.6799, 1.91675, 12.0046 )
 mesh = SubResource( 82 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/Wall5"]
 
@@ -400,7 +380,6 @@ shape = SubResource( 84 )
 [node name="Wall2" type="MeshInstance" parent="Pilars"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2359, 1.5, -20.1314 )
 mesh = SubResource( 82 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/Wall2"]
 
@@ -410,7 +389,6 @@ shape = SubResource( 85 )
 [node name="Wall3" type="MeshInstance" parent="Pilars"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.608, 1.5, -9.30968 )
 mesh = SubResource( 82 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/Wall3"]
 
@@ -420,7 +398,6 @@ shape = SubResource( 86 )
 [node name="Wall4" type="MeshInstance" parent="Pilars"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.6622, 1.5, 10.0673 )
 mesh = SubResource( 82 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Pilars/Wall4"]
 
@@ -430,9 +407,10 @@ shape = SubResource( 87 )
 [node name="MeshInstanceFloor" type="MeshInstance" parent="."]
 transform = Transform( 25, 0, 0, 0, 1, 0, 0, 0, 25, 0, -1.00112, 0 )
 mesh = SubResource( 1 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="MeshInstanceFloor"]
 
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstanceFloor/StaticBody"]
 shape = SubResource( 2 )
+
+[node name="Hunter" parent="." instance=ExtResource( 1 )]
