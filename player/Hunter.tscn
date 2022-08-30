@@ -206,7 +206,7 @@ material/0 = ExtResource( 6 )
 material/0 = ExtResource( 6 )
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Hunter/Armature/Skeleton" index="9"]
-transform = Transform( 0.161978, -0.0629781, 0.984781, 0.833073, -0.526171, -0.170674, 0.528912, 0.848042, -0.0327634, -0.536461, 0.869445, -0.0241686 )
+transform = Transform( 0.2245, -0.111031, 0.968127, 0.805548, -0.537905, -0.248491, 0.548352, 0.835661, -0.0313189, -0.552821, 0.937208, -0.0615024 )
 bone_name = "mixamorig_RightHandIndex1"
 
 [node name="Ax" parent="Hunter/Armature/Skeleton/BoneAttachment" instance=ExtResource( 4 )]
