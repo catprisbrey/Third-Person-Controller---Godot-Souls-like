@@ -7,7 +7,7 @@
 [resource]
 params_cull_mode = 2
 albedo_texture = ExtResource( 1 )
-metallic = 1.0
+metallic = 0.5
 metallic_specular = 0.0
 metallic_texture = ExtResource( 2 )
 normal_enabled = true

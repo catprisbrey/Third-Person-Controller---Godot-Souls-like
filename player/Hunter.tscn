@@ -118,7 +118,7 @@ states/BigAttack/position = Vector2( 573, -12 )
 states/Idle/node = SubResource( 20 )
 states/Idle/position = Vector2( 359, 213 )
 states/Jump/node = SubResource( 21 )
-states/Jump/position = Vector2( 560, 327 )
+states/Jump/position = Vector2( 560, 328 )
 states/Roll/node = SubResource( 22 )
 states/Roll/position = Vector2( 560, 111 )
 states/Run/node = SubResource( 23 )
@@ -128,7 +128,7 @@ states/Walk/position = Vector2( 560, 213 )
 transitions = [ "Idle", "Attack1", SubResource( 25 ), "Attack1", "Attack2", SubResource( 26 ), "Idle", "Walk", SubResource( 27 ), "Walk", "Run", SubResource( 28 ), "Run", "Walk", SubResource( 31 ), "Walk", "Idle", SubResource( 32 ), "Run", "BigAttack", SubResource( 37 ), "BigAttack", "Idle", SubResource( 38 ), "Roll", "Run", SubResource( 39 ), "Roll", "Idle", SubResource( 40 ), "Roll", "Walk", SubResource( 41 ), "Walk", "Jump", SubResource( 42 ), "Jump", "Walk", SubResource( 43 ), "Run", "Jump", SubResource( 44 ), "Idle", "Jump", SubResource( 45 ), "Attack1", "Idle", SubResource( 46 ), "Attack2", "Idle", SubResource( 47 ) ]
 start_node = "Idle"
 end_node = "Idle"
-graph_offset = Vector2( 0, 113.71 )
+graph_offset = Vector2( 0, -119.506 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=50]
 
@@ -206,7 +206,7 @@ material/0 = ExtResource( 6 )
 material/0 = ExtResource( 6 )
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Hunter/Armature/Skeleton" index="9"]
-transform = Transform( 0.2245, -0.111031, 0.968127, 0.805548, -0.537905, -0.248491, 0.548352, 0.835661, -0.0313189, -0.552821, 0.937208, -0.0615024 )
+transform = Transform( 0.0242532, -0.125277, 0.991824, 0.717615, -0.688551, -0.104518, 0.696016, 0.714285, 0.0732004, -0.532637, 0.976459, -0.116829 )
 bone_name = "mixamorig_RightHandIndex1"
 
 [node name="Ax" parent="Hunter/Armature/Skeleton/BoneAttachment" instance=ExtResource( 4 )]
