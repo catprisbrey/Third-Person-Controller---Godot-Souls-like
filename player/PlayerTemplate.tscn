@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/PlayerTemplate.gd" type="Script" id=1]
 [ext_resource path="res://scripts/CameraTemplate.gd" type="Script" id=2]
 
-[sub_resource type="CapsuleShape" id=48]
+[sub_resource type="CapsuleShape3D" id=48]
 radius = 0.3047
 height = 1.20199
 
@@ -128,24 +128,24 @@ graph_offset = Vector2( 0, 103.504 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=50]
 
-[node name="PlayerTemplate" type="KinematicBody"]
+[node name="PlayerTemplate" type="CharacterBody3D"]
 script = ExtResource( 1 )
 PlayerAnimationTree = NodePath("AnimationTree")
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0.917525, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D( -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0.917525, 0 )
 shape = SubResource( 48 )
 
-[node name="Camroot" type="Spatial" parent="."]
+[node name="Camroot" type="Node3D" parent="."]
 script = ExtResource( 2 )
 
-[node name="h" type="Spatial" parent="Camroot"]
+[node name="h" type="Node3D" parent="Camroot"]
 
-[node name="v" type="Spatial" parent="Camroot/h"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41498, 0 )
+[node name="v" type="Node3D" parent="Camroot/h"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41498, 0 )
 
-[node name="Camera" type="ClippedCamera" parent="Camroot/h/v"]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4.03244e-07, 0, -2.67056 )
+[node name="Camera3D" type="Camera3D" parent="Camroot/h/v"]
+transform = Transform3D( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4.03244e-07, 0, -2.67056 )
 current = true
 process_mode = 1
 
@@ -155,7 +155,7 @@ one_shot = true
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 49 )
 process_mode = 0
-root_motion_track = NodePath("Skeleton:mixamorigSpine1")
+root_motion_track = NodePath("Skeleton3D:mixamorigSpine1")
 parameters/playback = SubResource( 50 )
 parameters/conditions/IsInAir = false
 parameters/conditions/IsNotMoving = false
