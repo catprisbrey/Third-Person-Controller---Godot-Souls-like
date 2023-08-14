@@ -1,20 +1,20 @@
-extends KinematicBody
+extends CharacterBody3D
 
-# Allows to pick your animation tree from the inspector
-export (NodePath) var PlayerAnimationTree 
-export onready var animation_tree = get_node(PlayerAnimationTree)
-onready var playback = animation_tree.get("parameters/playback");
+## Allows to pick your animation tree from the inspector
+@export var animation_tree : AnimationTree
 
-# Allows to pick your chracter's mesh from the inspector
-export (NodePath) var PlayerCharacterMesh
-export onready var player_mesh = get_node(PlayerCharacterMesh)
+## Allows to pick your chracter's mesh from the inspector
+@export var player_mesh : Node3D
 
 # Gamplay mechanics and Inspector tweakables
-export var gravity = 9.8
-export var jump_force = 9
-export var walk_speed = 1.3
-export var run_speed = 5.5
-export var dash_power = 12 # Controls roll and big attack speed boosts
+@export var gravity = 9.8
+@export var jump_force = 9
+@export var walk_speed = 1.3
+@export var run_speed = 5.5
+@export var dash_power = 12 # Controls roll and big attack speed boosts
+
+#Animation playback control
+var playback
 
 # Animation node names
 var roll_node_name = "Roll"
@@ -42,7 +42,14 @@ var movement_speed = int()
 var angular_acceleration = int()
 var acceleration = int()
 
-func _ready(): # Camera based Rotation
+func _ready(): # Camera3D based Rotation
+	if(animation_tree == null):
+		animation_tree = $AnimationTree
+		
+	if(player_mesh == null):
+		player_mesh = $Hunter
+		
+	playback = animation_tree.get("parameters/playback");
 	direction = Vector3.BACK.rotated(Vector3.UP, $Camroot/h.global_transform.basis.get_euler().y)
 
 func _input(event): # All major mouse and button input events
@@ -155,15 +162,17 @@ func _physics_process(delta):
 	
 	# Movment mechanics with limitations during rolls/attacks
 	if ((is_attacking == true) or (is_rolling == true)): 
-		horizontal_velocity = horizontal_velocity.linear_interpolate(direction.normalized() * .01 , acceleration * delta)
+		horizontal_velocity = horizontal_velocity.lerp(direction.normalized() * .01 , acceleration * delta)
 	else: # Movement mechanics without limitations 
-		horizontal_velocity = horizontal_velocity.linear_interpolate(direction.normalized() * movement_speed, acceleration * delta)
+		horizontal_velocity = horizontal_velocity.lerp(direction.normalized() * movement_speed, acceleration * delta)
 	
 	# The Physics Sauce. Movement, gravity and velocity in a perfect dance.
 	movement.z = horizontal_velocity.z + vertical_velocity.z
 	movement.x = horizontal_velocity.x + vertical_velocity.x
 	movement.y = vertical_velocity.y
-	move_and_slide(movement, Vector3.UP)
+	set_velocity(movement)
+	set_up_direction(Vector3.UP)
+	move_and_slide()
 
 	# ========= State machine controls =========
 	# The booleans of the on_floor, is_walking etc, trigger the 
@@ -179,5 +188,6 @@ func _physics_process(delta):
 	animation_tree["parameters/conditions/IsNotRunning"] = !is_running
 	# Attacks and roll don't use these boolean conditions, instead
 	# they use "travel" or "start" to one-shot their animations.
-	
-	
+
+	print_debug(playback.get_current_node())
+	print_debug(animation_tree.get("parameters/conditions/IsWalking"))

@@ -1,13 +1,13 @@
-extends Spatial
+extends Node3D
 
 # Allows to select the player mesh from the inspector
-export (NodePath) var PlayerCharacterMesh
+@export var PlayerCharacterMesh : NodePath
 
 var camrot_h = 0
 var camrot_v = 0
-export var cam_v_max = 75 # -75 recommended
-export var cam_v_min = -55 # -55 recommended
-export var joystick_sensitivity = 20
+@export var cam_v_max = 75 # -75 recommended
+@export var cam_v_min = -55 # -55 recommended
+@export var joystick_sensitivity = 20
 var h_sensitivity = .1
 var v_sensitivity = .1
 var rot_speed_multiplier = .15 #reduce this to make the rotation radius larger
@@ -17,7 +17,7 @@ var joyview = Vector2()
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	$h/v/Camera.add_exception(get_parent())
+#	$h/v/Camera3D.add_exception(get_parent())
 	
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -49,7 +49,7 @@ func _physics_process(delta):
 		camrot_h = $h.rotation_degrees.y
 	else:
 		#MOUSE CAMERA
-		$h.rotation_degrees.y = lerp($h.rotation_degrees.y, camrot_h, delta * h_acceleration)
+		$h.rotation_degrees.y = lerpf($h.rotation_degrees.y, camrot_h, delta * h_acceleration)
 	
-	$h/v.rotation_degrees.x = lerp($h/v.rotation_degrees.x, camrot_v, delta * v_acceleration)
+	$h/v.rotation_degrees.x = lerpf($h/v.rotation_degrees.x, camrot_v, delta * v_acceleration)
 	
